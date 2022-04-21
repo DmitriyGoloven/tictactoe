@@ -1,9 +1,11 @@
 import React from 'react';
+import Game from "./Game";
+import '/src/style/style.scss'
 
 const App = () => {
     return (
-        <div>
-            <h1 className={'first'}>tictactoe  1</h1>
+        <div >
+            <Game/>
         </div>
     );
 };
