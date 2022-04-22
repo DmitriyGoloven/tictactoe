@@ -7,6 +7,6 @@ function reducer(state, action) {
     //     default: return state;
     // }
 
-return {state,action};
+return {state};
 }
 export default reducer
