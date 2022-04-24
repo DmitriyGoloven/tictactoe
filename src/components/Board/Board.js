@@ -1,5 +1,6 @@
 import React from 'react';
-import Square from "./Square";
+import Square from "../Square/Square";
+import {myState} from "../../store/playerReducer/reducers";
 
 const Board = ({squares,click}) => {
 
@@ -9,6 +10,7 @@ const Board = ({squares,click}) => {
                 squares.map((square, i) =>(
                     <Square key={i} value={square} onClick={()=>click(i)}/>
                 ))
+
             }
 
         </div>
