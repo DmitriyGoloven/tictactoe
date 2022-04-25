@@ -1,5 +1,5 @@
-.backGround{
-  width:100%;
+.backGround {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -8,7 +8,7 @@
   background-color: lightgrey;
 }
 
-.board{
+.board {
   display: flex;
   width: 300px;
   height: 300px;
@@ -17,7 +17,8 @@
   flex-wrap: wrap;
 
 }
-.cell{
+
+.cell {
   display: flex;
   width: 100px;
   height: 100px;
@@ -28,12 +29,13 @@
   align-items: center;
 
 }
-.cell:hover{
+
+.cell:hover {
   background-color: lightgrey;
   font-size: 70px;
 }
 
-.button{
+.button {
   width: 130px;
   height: 30px;
   margin-top: 20px;
@@ -41,12 +43,12 @@
   background-color: ghostwhite;
 }
 
-.button:hover{
+.button:hover {
   background-color: lightgrey;
   font-size: 15px;
 }
 
-p{
+p {
   text-align: center;
   margin-bottom: 20px;
   font-weight: bolder;

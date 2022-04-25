@@ -1,7 +1,9 @@
 import React, {useCallback, useMemo} from 'react';
 import '/src/style/style.scss'
 import Board from "../Board/Board";
+import Button from "../button/Button";
 import {defaultState} from "../../store/playerReducer/reducer";
+
 
 const lines = [
     [0, 1, 2],
@@ -14,10 +16,9 @@ const lines = [
     [2, 4, 6],
 ];
 
-const Game = ({changeNameAction,newGameAction, player, board}) => {
+const Game = ({changeNameAction, newGameAction, player, board}) => {
 
-    const handleClick = (index)=> {
-        console.log(index)
+    const handleClick = (index) => {
         const boardCopy = [...defaultState.board]
 
         if (defaultState.winner)
@@ -30,17 +31,23 @@ const Game = ({changeNameAction,newGameAction, player, board}) => {
         }
     }
 
+    const newGame = useCallback(() => {
+        defaultState.board = Array(9).fill(null),
+            defaultState.winner = null;
+        newGameAction()
+    }, [])
+
     return (
         <div className={'backGround'}>
             <p> {defaultState.winner ? "WINNER : " + defaultState.winner : "ACTIVE : " + (player ? player : "NO PLAYER")}</p>
             <Board squares={defaultState.board} click={handleClick}/>
-            <button className={"button"}  onClick={newGameAction}>NEW GAME</button>
+            <Button newGame={newGame}/>
         </div>
     );
 };
 
 
-
+export default Game;
 
 function calculateWinner(squares) {
 
@@ -58,5 +65,3 @@ function calculateWinner(squares) {
     }
     return null;
 }
-
-export default Game;
