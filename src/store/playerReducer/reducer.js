@@ -9,7 +9,7 @@ export const defaultState = {
 }
 const reducer = handleAction(changeNameAction, (state) => {
 
-    return {...state, player: state.xIsNext ? 'X' : 'O', xIsNext: !state.xIsNext};
+    return {...state, player: state.xIsNext ? 'O' : 'X', xIsNext: !state.xIsNext};
 
 }, defaultState)
 
