@@ -1,8 +1,8 @@
 import React, {useCallback, useMemo} from 'react';
-import {useDispatch, useSelector} from "react-redux";
 import '/src/style/style.scss'
 import Board from "../Board/Board";
-import {myState} from "../../store/playerReducer/reducers";
+import {defaultState} from "../../store/playerReducer/reducer";
+
 const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -14,48 +14,32 @@ const lines = [
     [2, 4, 6],
 ];
 
-const Game = () => {
+const Game = ({changeNameAction,newGameAction, player, board}) => {
 
     const handleClick = (index)=> {
-        const boardCopy = [...myState.board]
-        if (myState.winner)
-            return changeName()
-        if (!boardCopy[index] && !myState.winner) {
+        console.log(index)
+        const boardCopy = [...defaultState.board]
+
+        if (defaultState.winner)
+            return changeNameAction()
+        if (!boardCopy[index] && !defaultState.winner) {
             boardCopy[index] = player
-            myState.board = boardCopy
-
-            myState.winner = calculateWinner(myState.board)
-            changeName()
+            defaultState.board = boardCopy
+            defaultState.winner = calculateWinner(defaultState.board)
+            changeNameAction()
         }
-    }
-
-    const dispatch = useDispatch();
-    const player = useSelector(state => state.player)
-    const board = useSelector(state => state.board)
-
-    const changeName = () => {
-        dispatch({
-            type: 'CHANGE_PLAYER_X'
-        })
-    }
-    const newGame = () => {
-        myState.board = Array(9).fill(null)
-        myState.winner = null
-        dispatch({
-            type: 'NEW_GAME'
-        })
     }
 
     return (
         <div className={'backGround'}>
-            <p> {myState.winner ? "WINNER : " + myState.winner : "ACTIVE : " + (player ? player : "NO PLAYER")}</p>
-            <Board squares={myState.board} click={handleClick}/>
-            <button className={"button"}  onClick={newGame}>NEW GAME</button>
+            <p> {defaultState.winner ? "WINNER : " + defaultState.winner : "ACTIVE : " + (player ? player : "NO PLAYER")}</p>
+            <Board squares={defaultState.board} click={handleClick}/>
+            <button className={"button"}  onClick={newGameAction}>NEW GAME</button>
         </div>
     );
 };
 
-export default Game;
+
 
 
 function calculateWinner(squares) {
@@ -74,3 +58,5 @@ function calculateWinner(squares) {
     }
     return null;
 }
+
+export default Game;

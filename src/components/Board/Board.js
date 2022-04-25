@@ -1,6 +1,6 @@
 import React from 'react';
 import Square from "../Square/Square";
-import {myState} from "../../store/playerReducer/reducers";
+import {defaulttState} from "../../store/playerReducer/reducer";
 
 const Board = ({squares,click}) => {
 
