@@ -1,12 +1,13 @@
 {
-  "main": "src/test.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
     "@koa/router": "^10.1.1",
-    "coa": "^2.0.2",
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
