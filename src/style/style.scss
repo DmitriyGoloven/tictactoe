@@ -18,7 +18,7 @@
 
 }
 
-.cell {
+.square {
   display: flex;
   width: 100px;
   height: 100px;
@@ -30,7 +30,7 @@
 
 }
 
-.cell:hover {
+.square:hover {
   background-color: lightgrey;
   font-size: 70px;
 }
@@ -52,4 +52,7 @@ p {
   text-align: center;
   margin-bottom: 20px;
   font-weight: bolder;
+  border: 2px solid black;
+  padding: 5px;
+  background-color: ghostwhite;
 }

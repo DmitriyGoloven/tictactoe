@@ -1,18 +1,15 @@
 import React from 'react';
 import Square from "../Square/Square";
-import {defaulttState} from "../../store/playerReducer/reducer";
 
-const Board = ({squares,click}) => {
+const Board = ({squares, click}) => {
 
     return (
         <div className={"board"}>
             {
-                squares.map((square, i) =>(
-                    <Square key={i} value={square} onClick={()=>click(i)}/>
+                squares.map((square, i) => (
+                    <Square key={i} value={square} onClick={() => click(i)}/>
                 ))
-
             }
-
         </div>
     );
 };

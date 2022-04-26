@@ -1,14 +1,6 @@
 import {createStore} from 'redux';
-import boardReducer from './boardReducer/reducer'
-import playerReducer from './playerReducer/reducer'
-import {combineReducers} from "redux";
+import reducer from "./playerReducer/reducer";
 
-
-const rootReducer = combineReducers({
-    boardReducer,
-    playerReducer,
-})
-
-const store = createStore(rootReducer);
+const store = createStore(reducer);
 
 export default store;

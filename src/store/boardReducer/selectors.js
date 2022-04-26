@@ -1,1 +1,0 @@
-export const board = state => state.boardReducer.board;

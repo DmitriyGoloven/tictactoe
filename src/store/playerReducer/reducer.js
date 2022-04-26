@@ -1,5 +1,7 @@
-import {handleAction} from "redux-actions";
+import {handleAction, handleActions} from "redux-actions";
 import {changeNameAction} from "./actions";
+import {calculateWinner} from "../../components/Game/Game";
+import {newGameAction} from "./actions";
 
 export const defaultState = {
     player: null,
@@ -7,13 +9,26 @@ export const defaultState = {
     xIsNext: false,
     winner: null
 }
-const reducer = handleAction(changeNameAction, (state) => {
 
-    return {...state, player: state.xIsNext ? 'O' : 'X', xIsNext: !state.xIsNext};
+const reducer = handleActions({
+    [changeNameAction]: (state) => {
+
+        const winPlayer = calculateWinner(state.board)
+        return {
+            ...state,
+            player: state.xIsNext ? 'O' : 'X',
+            xIsNext: !state.xIsNext,
+            winner: winPlayer
+        };
+    },
+    [newGameAction]: state => ({
+        ...state,
+        board: Array(9).fill(null),
+        winner: null,
+        player: null
+    }),
 
 }, defaultState)
 
-
-export default reducer
-
+export default reducer;
 
