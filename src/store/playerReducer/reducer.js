@@ -16,7 +16,7 @@ const reducer = handleActions({
         const winPlayer = calculateWinner(state.board)
         return {
             ...state,
-            player: state.xIsNext ? 'O' : 'X',
+            player: state.xIsNext ? 'X' : 'O',
             xIsNext: !state.xIsNext,
             winner: winPlayer
         };
@@ -25,7 +25,8 @@ const reducer = handleActions({
         ...state,
         board: Array(9).fill(null),
         winner: null,
-        player: null
+        player: null,
+        xIsNext: false,
     }),
 
 }, defaultState)
