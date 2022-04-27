@@ -2,6 +2,7 @@ import React, {useCallback, useMemo} from 'react';
 import '/src/style/style.scss'
 import Board from "../Board/Board";
 
+
 const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -13,16 +14,11 @@ const lines = [
     [2, 4, 6],
 ];
 
-const Game = ({changeNameAction, newGameAction, player, winnerPlayer, board}) => {
+const Game = ({changeNameAction, newGameAction,updateBoardAction, player, winnerPlayer, board}) => {
 
     const handleClick = useCallback((index) => {
-        const boardCopy = board
 
-        if (winnerPlayer || boardCopy[index])
-            return
-
-        boardCopy[index] = player
-        board = boardCopy
+        updateBoardAction(index)
         changeNameAction();
     }, [ player, board]);
 

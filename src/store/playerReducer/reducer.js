@@ -1,5 +1,5 @@
 import {handleAction, handleActions} from "redux-actions";
-import {changeNameAction} from "./actions";
+import {changeNameAction, updateBoard, updateBoardAction} from "./actions";
 import {calculateWinner} from "../../components/Game/Game";
 import {newGameAction} from "./actions";
 
@@ -28,6 +28,20 @@ const reducer = handleActions({
         player: null,
         xIsNext: false,
     }),
+    [updateBoardAction]: (state, { payload }) => {
+        const sumState = {
+            board: state.board,
+        }
+        console.log(payload)
+        if (state.winner || sumState.board[payload.payload])
+            return state
+        sumState.board[payload.payload] = state.player;
+
+        return {
+            ...state,
+            board: sumState.board,
+        };
+    }
 
 }, defaultState)
 
